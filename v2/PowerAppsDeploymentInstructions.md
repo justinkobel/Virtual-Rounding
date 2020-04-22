@@ -39,7 +39,7 @@ If your installation account has not yet been granted a Power Automate entitleme
 10. Connect to your Virtual Rounding site (the v2 one) and select the Virtual Rounding list. If this list was imported as "Virtual Rounding", you're good to go!  If you chose an alternative name; you will need to replace references to 'Virtual Rounding' in the Power App formulas with the name of your list.
 11. Share the App "File... Share within the Power Apps studio" with any Providers who will need access to it (this should be via AAD group for larger deployments).  You will probably want to un-select the "Send email" prompt until you are ready to share it with the users.
 
-## Power App Field Reference Updates (Not be necessary in v2.1 Apps)
+## Room Join Power App Field Reference Updates (Not be necessary in v2.1 Apps)
 
 This is not necessary in the Power App provided by KiZAN on this repository as of April 22, 2020. You may skip on down to "Update Power Automate Flows"
 
@@ -52,9 +52,9 @@ This is not necessary in the Power App provided by KiZAN on this repository as o
     ![Fixing Shared With/Shared To](/v2/Documentation/Images/ProviderApp-SharedTotoSharedWith.png)
 
 6. Update the "Set Name" button's OnSelect Action with the below formula:
-   Patch('Virtual Rounding', RoomGallery.Selected, {PatientName: PatientName.Text}) ;Navigate(Complete,ScreenTransition.Fade)
+   Patch('Virtual Rounding', RoomGallery.Selected, {'Patient Name': PatientName.Text}) ;Navigate(Complete,ScreenTransition.Fade)
 7. Update the "Clear Name" button's OnSelect Action with the below formula:
-    Patch('Virtual Rounding', RoomGallery.Selected, {PatientName: ""}) ;Navigate(Complete,ScreenTransition.Fade)
+    Patch('Virtual Rounding', RoomGallery.Selected, {'Patient Name': ""}) ;Navigate(Complete,ScreenTransition.Fade)
 8. Navigate to the "Joining Room" screen, and select the "This room meeting has been shared with 1 external participant(s) label.
 9. Replace this label's text attribute with the below formula:
    Concatenate("This room meeting has been shared with ", Text(RoomGallery.Selected.SharedWith), " external participant(s).")
