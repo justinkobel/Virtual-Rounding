@@ -85,9 +85,6 @@ while ($existingSiteTrue -eq $true) {
 $sharepointMasterSiteNameShort = $sharepointMasterSiteName.replace(" ", "")
 $SharePointMasterSiteURL = $sharepointBaseUrl + "sites/" + $sharepointMasterSiteNameShort
 
-Write-Host "Creating Site '$sharepointMasterSiteName'" -ForegroundColor Green
-New-PnPTenantSite -Title $sharepointMasterSiteName -Url $SharePointMasterSiteURL -Owner $adminUPN -TimeZone 11 -ErrorAction Stop
-
 Write-Host "Connecting to Site '$sharepointMasterSiteName'" -ForegroundColor Green
 $siteReady = $false
 while ($siteReady -eq $false) {
